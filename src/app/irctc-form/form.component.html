@@ -1,0 +1,52 @@
+<div [hidden]="submitted">
+  <form id="msform" (ngSubmit)="onSubmit()" #irctcForm="ngForm">
+    <!-- progressbar -->
+
+    <!-- fieldsets -->
+    <fieldset>
+
+      <h2 class="fs-title">Create your account</h2>
+      <div>
+
+        <select [(ngModel)]="data1.fromStation" name="fromStation1" #fromStation1="ngModel" required>
+          <!-- <option value="" disabled selected>From Station</option> -->
+          <option *ngFor="let data of fromStation" value="data.fromStation">{{data.fromStation}}</option>
+        </select>
+        <div [hidden]="fromStation1.valid " class="alert alert-danger">
+          FromStation is required
+        </div>
+      </div>
+      <select [(ngModel)]="data1.toStation" name="toStation1" #toStation1="ngModel" required>
+        <!-- <option value="valsad" disabled selected>To Station</option> -->
+        <option *ngFor="let data of toStation" value="data.to">{{data.to}}</option>
+      </select>
+      <div [hidden]="toStation1.valid " class="alert alert-danger">
+        ToStation is required
+      </div>
+      <input type="date" name="date1" placeholder="Date"[(ngModel)]="data1.date" #date1="ngModel" required />
+      <div [hidden]="date1.valid " class="alert alert-danger">
+        Date is required
+      </div>
+      <input type="text" name="trainNo1" placeholder="Train Number"  [(ngModel)]="data1.trainNo" #trainNo1="ngModel" required maxlength="5"/>
+      <div [hidden]="trainNo1.valid " class="alert alert-danger">
+        TrainNo is required
+      </div>
+      <select [(ngModel)]="data1.noOfTicket" name="noOfTicket1" #noOfTicket1="ngModel" required>
+        <!-- <option value="" disabled selected>No of Ticket</option> -->
+        <option *ngFor="let data of noOfTicket" value="data.noOfTickets">{{data.noOfTickets}}</option>
+      </select>
+      <div [hidden]="noOfTicket1.valid " class="alert alert-danger">
+        NoOfTicket is required
+      </div>
+      <select [(ngModel)]="data1.typeOfTicket" name="typeOfTicket1" #typeOfTicket1="ngModel" required>
+        <!-- <option value="valsad" disabled selected>Type of Ticket</option> -->
+        <option *ngFor="let data of typeOfTicket" value="data.typeOfTicket">{{data.typeOfTicket}}</option>
+      </select>
+      <div [hidden]="typeOfTicket1.valid " class="alert alert-danger">
+        TypeOfTicket is required
+      </div>
+      <input type="submit" class="btn btn-success" [disabled]="!irctcForm.form.valid" />
+
+    </fieldset>
+  </form>
+</div>
